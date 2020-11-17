@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 function Countdown() {
-  const [count, setCount] = useState(100);
+  let initial = 100;
+  const [count, setCount] = useState(initial);
   const [toggled, setIsToggled] = useState(true);
 
   const timer = () => {
@@ -18,10 +19,14 @@ function Countdown() {
 
   let buttonName = !toggled ? "Start" : "Stop";
 
-  let buttonColor = !toggled ? "lightgray" : "lightgreen";
+  let buttonColor = !toggled ? "lightgreen" : "lightcoral";
 
   const handleClick = e => {
     setIsToggled(!toggled);
+  };
+
+  const handleReset = e => {
+    setCount(initial);
   };
 
   return (
@@ -34,6 +39,9 @@ function Countdown() {
         onClick={handleClick}
       >
         {buttonName}
+      </button>
+      <button class="btn" onClick={handleReset}>
+        Reset
       </button>
     </div>
   );
